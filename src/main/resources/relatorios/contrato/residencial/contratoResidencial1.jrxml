@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoResidencial1" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="25"/>
+	<property name="ireport.y" value="51"/>
+	<parameter name="contrato_numero" class="java.lang.String"/>
+	<parameter name="locador_cnpj" class="java.lang.String"/>
+	<parameter name="locador_endereco_completo" class="java.lang.String"/>
+	<parameter name="locador_razao_social" class="java.lang.String"/>
+	<parameter name="locatario_cpf" class="java.lang.String"/>
+	<parameter name="locatario_endereco_completo" class="java.lang.String"/>
+	<parameter name="locatario_estado_civil" class="java.lang.String"/>
+	<parameter name="locatario_nacionalidade" class="java.lang.String"/>
+	<parameter name="locatario_nome" class="java.lang.String"/>
+	<parameter name="locatario_profissao" class="java.lang.String"/>
+	<parameter name="locatario_rg" class="java.lang.String"/>
+	<parameter name="imovel_endereco_completo" class="java.lang.String"/>
+	<parameter name="contrato_duracao" class="java.lang.String"/>
+	<parameter name="contrato_inicio" class="java.lang.String"/>
+	<parameter name="contrato_fim" class="java.lang.String"/>
+	<parameter name="contrato_valor_aluguel" class="java.lang.String"/>
+	<parameter name="contrato_dia_vencimento" class="java.lang.String"/>
+	<parameter name="contrato_desconto_pontualidade" class="java.lang.String"/>
+	<title>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="555" height="31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE LOCAÇÃO RESIDENCIAL DE Nº. ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="396" y="0" width="100" height="31"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{contrato_numero}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="767" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="34" width="109" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Locador:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="54" width="110" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Locatário (Os) A (As):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="74" width="110" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Endereço do Imóvel:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="94" width="110" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vigência do Contrato:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="114" width="110" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor do Aluguel:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="111" y="34" width="415" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{locador_razao_social}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="54" width="416" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{locatario_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="74" width="415" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{imovel_endereco_completo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="94" width="415" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{contrato_duracao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="114" width="415" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{contrato_valor_aluguel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="157" width="555" height="81"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["   Pelo presente instrumento particular de Locação " + $P{locador_razao_social} + ", inscrita no CNPJ " + $P{locador_cnpj} + " localizada na " + $P{locador_endereco_completo} +  ",e " + $P{locatario_nome} + ", " + $P{locatario_nacionalidade} + ", " + $P{locatario_profissao} +  ", " + $P{locatario_estado_civil} + " portador do RG " + $P{locatario_rg} + " e CPF Nº. " + $P{locatario_cpf} + " residentes e domiciliando sito, " + $P{locador_endereco_completo} + " donominado mais adiante simplesmente <b>LOCATÁRIO</b> o (os), a (as), tem entre si justo e contratado, por este e na melhor forma de direito, a presente locação mediante as cláusulas e condições abaixo discriminadas e disposições legais pertinentes, que voluntariamente aceitam e outorgam:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="243" width="555" height="62"/>
+				<box bottomPadding="2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b>CLAUSULA PRIMEIRA</b> - O <b>LOCADOR</b> dá em locação o imóvel sito " + $P{imovel_endereco_completo} + " à pelo prazo de " + $P{contrato_duracao} + " (meses), ao iniciar em " + $P{contrato_inicio} + " e terminar em " + $P{contrato_fim} + ". (Renováveis automaticamente por igual, caso não haja manifestação em contrário de uma das partes). Data em que  + <b>LOCATÁRIO</b> o (os, a(as), se abriga a restituir o imóvel locado no perfeito estado de conservação em que o recebeu, salvo as deteriorações decorrentes do uso normal, inteiramente livre e desocupado."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="304" width="554" height="69"/>
+				<box bottomPadding="2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b>CLAUSULA ESPECÍFICA – O LOCATÁRIO</b> (os), a (as), tem poder de transferir para seu nome junto aos órgãos competentes: <b>(CAESB) e (CEB)</b>, as contas provenientes de fornecimento de água e energia elétrica, de acordo com as normas de alteração de titularidade fornecida pelas entidades acima descritas, o LOCATÁRIO fica ciente que é de sua responsabilidade todas as contas que forem feitas co período vigente deste contrato, <b>ficando assim este documento em conformidade com as exigências atuais</b>."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="372" width="554" height="100"/>
+				<box bottomPadding="2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<u>Parágrafo primeiro</u> – Antes do vencimento do prazo ajustado no caput desta cláusula não poderá o <b>LOCADOR</b> retomar o imóvel salvo se motivado por inflação contratual do (os), a (as), LOCATÁRIO. No caso de devolução do imóvel ao <b>LOCADOR</b> antes do prazo, o (os), a (as) <b>LOCATÁRIO</b> pagará a multa prevista na <b>CLAUSULA DÉCIMA SÉTIMA</b>. Estando o contrato vigente por tempo indeterminado, somente ficará isento o (os), a (as) <b>LOCATÁRIO</b>, do pagamento da multa contratual se avisar ao <b>LOCADOR</b>, por escrito, com antecedência mínima de 30 dias, <b>Segundo os termos que o artigo 27 da Lei 8245/9, lei do inquilinato, fica claro que no caso de venda do imóvel, o LOCATÁRIO terá a preferência de compra nos mesmos termos e condições que terceiros, caso não se manifeste no prazo máximo de 30 dias deverá desocupar o mesmo sem nenhum dano as partes.</b>"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="517" width="554" height="50"/>
+				<box bottomPadding="2"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<u>Parágrafo terceiro</u> – Na hipótese do (os, a (as) <b>LOCATÁRIO</b> abandonar o imóvel, fica o <b>LOCADOR</b> e ou o Administrador autorizado a imitir-se na sua posse, a fim de evitar a depredação ou invasão do mesmo. O termo de entrega de chaves será substituído por uma DECLARAÇÃO DE IMISSÃO DE POSSE, firmado pelo <b>LOCADOR</b> e 02 (duas) testemunhas idôneas."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="566" width="555" height="77"/>
+				<box bottomPadding="2"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<u>Parágrafo quarto</u> – Em caso de falecimento do <b>LOCADOR</b>, a locação transmitir-se-á aos herdeiros. No caso de falecimento do <b>LOCATÁRIO</b>, ficarão sub-rogados nos seus direitos e obrigações, ao seu cônjuge ou a companheira e, sucessivamente, aos herdeiros, desde que residente no imóvel. Em caso de separação judicial ou de fato, a locação prosseguirá automaticamente com o cônjuge ou companheira que permanecer no imóvel; neste caso deverá a sub-rogação ser comunicada por escrito, ficando o <b>LOCADOR</b> e o administrador, no direito de exigir nova garantia de fiança."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="472" width="555" height="44"/>
+				<box bottomPadding="2"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<u>Parágrafo segundo</u> – Quando da devolução das chaves ao final do contrato, se as mesmas forem restituídas por preposto ou portador do o (os), a (as) <b>LOCATÁRIO</b>, fica este desde já autorizado a assinar o respectivo Termo de entrega de chaves, assim como, acompanhar e assinar o Termo de vistoria em nome daquele."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="692" width="555" height="60"/>
+				<box bottomPadding="2"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<u>Parágrafo primeiro</u> – O (os), a (as) <b>LOCATÁRIO</b> terá um desconto mensal a título de pontualidade de " + $P{contrato_desconto_pontualidade} + " sobre o valor do aluguel se efetuar o pagamento impreterivelmente até a data do vencimento; após 01 dia de atraso, será cobrado multa de 02%; após 10 dias os débitos serão corrigidos monetariamente; sobre o atraso serão cobrados juros de mora de 0,38% ao dia."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="643" width="555" height="49"/>
+				<box bottomPadding="2"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<u>CLÁUSULA SEGUNDA</u> – O valor mensal do aluguel, livremente pactuado será de " + $P{contrato_valor_aluguel} + " a ser pago pelo <b>LOCATÁRIO</b>, no dia " + $P{contrato_dia_vencimento} + " de cada mês, em boleto nos bancos autorizados, somado ao custo do banco pelo boleto ou pagamento em mãos para o responsável pelo contrato."]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+</jasperReport>

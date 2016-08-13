@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>	
+	    <title>Gerenciamento de Alugueis</title>
+	    <h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
+	    <h:outputStylesheet library="js" name="plugins/gritter/jquery.gritter.css"/>
+	    <h:outputStylesheet library="css" name="plugins/toastr/toastr.min.css"/>
+	    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+	    <h:outputStylesheet library="css" name="animate.css"/>
+	    <h:outputStylesheet library="css" name="style.css"/>
+	</h:head>
+	
+	<h:body>
+		<p:ajaxStatus styleClass="ajax-status" onsuccess="configurarMoeda()">
+			<f:facet name="start">
+				<h:graphicImage library="images" name="loader1.gif" />
+			</f:facet>
+			<f:facet name="complete">
+				<h:outputText value="" />
+			</f:facet>
+		</p:ajaxStatus>
+		
+		<!-- <header>
+			<div style="float: left">
+				<h:link outcome="/Home">
+					<h:graphicImage library="images" name="imobiliária.jpg"/>
+				</h:link>
+			</div>
+			
+			<div style="float: right; margin-right: 110px">
+			
+				<span style="float: left; height: 30px; line-height: 30px; margin-right: 60px">
+					Olá #{seguranca.nomeUsuario}!
+				</span>
+				
+				<h:form style="display: inline-block">
+					<p:menubar styleClass="menu-sistema">
+						<p:submenu label="Cadastrar">
+							<p:menuitem value="Locadores" outcome="/pages/locadores/LocadorListar"/>
+							<p:menuitem value="Locatários" outcome="/pages/locatarios/LocatarioListar"/>
+							<p:separator/>
+							<p:menuitem value="Imóveis" outcome="/pages/imoveis/PesquisaImoveis"/>
+							<p:menuitem value="Imobiliária" outcome="/pages/imobiliaria/PesquisaImobiliaria"/>
+						</p:submenu>
+						<p:menuitem value="Gerar / Consultar Contratos" outcome="/pages/contratos/PesquisaContratos"/>
+						<p:submenu label="Relatórios">
+							<p:menuitem value="Residencial"  outcome="/pages/relatorios/ContratoResidencialRelatorio"/>
+							<p:separator/>
+							<p:menuitem value="Comercial"  outcome="/pages/relatorios/ContratoComercialRelatorio"/>
+						</p:submenu>
+						<p:menuitem value="Sair" url="/j_spring_security_logout"/>
+					</p:menubar>
+				</h:form>
+				
+			</div>
+			<div style="clear: both"/>
+		</header> -->
+		
+		<!-- Conteúdo da Página -->
+		<div id="wrapper">
+
+			<!-- Barra de Navegação -->
+		    <nav class="navbar-default navbar-static-side" role="navigation">
+		        <div class="sidebar-collapse">
+		            <ul class="nav metismenu" id="side-menu">
+		                <li class="nav-header">
+		                   <div class="dropdown profile-element">
+		                   <span> <img alt="image" class="img-circle" src="#{resource['images:imobiliaria.jpg']}" /> </span>
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#"> 
+								<span class="clear"> <span class="block m-t-xs "> <strong class="font-bold">#{seguranca.nomeUsuario}<b class="caret"></b></strong></span></span>
+							</a>
+							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+	                            <li><a href="profile.html">Perfil</a></li>
+                                <li><a href="contacts.html">Contatos</a></li>
+                                <li><a href="mailbox.html">Emails</a></li>
+	                            <li><a href="#{request.contextPath}/j_spring_security_logout">Sair</a></li>
+	                        </ul>
+		                   </div>
+		                   <div class="logo-element">
+		                       IN+
+		                   </div>
+		               </li>
+		               <li class="active">
+	                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Cadastrar</span> <span class="fa arrow"></span></a>
+	                        <ul class="nav nav-second-level">
+	                            <li class="active"><a href="#{request.contextPath}/pages/locadores/LocadorListar.xhtml" >Locadores</a></li>
+	                            <li><a href="#{request.contextPath}/">Locatários</a></li>
+	                            <li class="divider"></li>
+	                            <li><a href="#{request.contextPath}/">Imóveis</a></li>
+	                            <li><a href="#{request.contextPath}/">Imobiliária<span class="label label-primary pull-right">Novo</span></a></li>
+	                        </ul>
+                    	</li>
+		                <li>
+		                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Gerar / Consultar Contratos</span></a>
+		                </li>
+		                <li>
+		                    <a href="#"><i class="fa fa-file-pdf-o"></i> <span class="nav-label">Relatórios</span> <span class="fa arrow"></span></a>
+		                    <ul class="nav nav-second-level collapse">
+	                            <li><a href="#">Contrato Comercial</a></li>
+	                            <li><a href="#">Contrato Residencial</a></li>
+                       		</ul>
+		                </li>
+		            </ul>
+		        </div>
+		    </nav>
+		    
+		    <div id="page-wrapper" class="gray-bg">
+		        <div class="row border-bottom">
+		            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+		                <div class="navbar-header">
+		                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+		                    <form role="search" class="navbar-form-custom" method="post" action="#">
+		                        <div class="form-group">
+		                            <input type="text" placeholder="Procurar algo..." class="form-control" name="top-search" id="top-search"></input>
+		                        </div>
+		                    </form>
+		                </div>
+		                <ul class="nav navbar-top-links navbar-right">
+		                    <li>
+		                        <a href="#{request.contextPath}/j_spring_security_logout" >
+		                            <i class="fa fa-sign-out"></i> Sair
+		                        </a>
+		                    </li>
+		                </ul>
+		
+		            </nav>
+		        </div>
+		        <div class="wrapper wrapper-content animated fadeInRight">
+		            <div class="row">
+		                <div class="col-lg-12">
+		                    <div class="text-center m-t-lg">
+		                        <h1>
+		                            Bem Vindo a Imobiliária
+		                        </h1>
+		                        <small>
+		                            Esta aplicação é destinada ao gerenciamento de uma Imobiliária.
+		                        </small>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="footer">
+		            <div class="pull-right">
+		                <strong>www.rangosolucoes.com.br</strong>
+		            </div>
+		            <div>
+		                <strong>©</strong> Rango Soluções Comerciais 
+		            </div>
+		        </div>
+		    </div>
+		    
+		</div>
+		
+		<!-- Mainly scripts -->
+		<h:outputScript library="js" name="jquery.maskMoney.js"/>
+		<h:outputScript library="js" name="jquery-2.1.1.js"/>
+		<h:outputScript library="js" name="bootstrap.min.js"/>
+		<h:outputScript library="js" name="plugins/metisMenu/jquery.metisMenu.js"/>
+		<h:outputScript library="js" name="plugins/slimscroll/jquery.slimscroll.min.js"/>
+		
+		<!-- Flot -->
+		<h:outputScript library="js" name="plugins/flot/jquery.flot.js"/>
+		<h:outputScript library="js" name="plugins/flot/jquery.flot.tooltip.min.js"/>
+		<h:outputScript library="js" name="plugins/flot/jquery.flot.spline.js"/>
+		<h:outputScript library="js" name="plugins/flot/jquery.flot.resize.js"/>
+		<h:outputScript library="js" name="plugins/flot/jquery.flot.pie.js"/>
+		
+		<!-- Custom and plugin javascript -->
+		<h:outputScript library="js" name="inspinia.js"/>
+		<h:outputScript library="js" name="plugins/pace/pace.min.js"/>
+		
+		 <!-- jQuery UI -->
+		 <h:outputScript library="js" name="jquery-ui.min.js"/>
+		 
+		 <!-- Toastr -->
+		 <h:outputScript library="js" name="plugins/toastr/toastr.min.js"/>
+	
+		<h:outputScript>
+		    //<![CDATA[
+		        $(document).ready(function() {
+		            setTimeout(function() {
+		                toastr.options = {
+		                    closeButton: true,
+		                    progressBar: true,
+		                    showMethod: 'slideDown',
+		                    timeOut: 4000
+		                };
+		                toastr.success('#{seguranca.nomeUsuario}', 'Seja Bem Vindo!');
+		
+		            }, 1300);		
+		        });
+		    //]]>
+		</h:outputScript>
+		
+	</h:body>
+	
+</html>
