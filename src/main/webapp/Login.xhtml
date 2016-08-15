@@ -9,36 +9,50 @@
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<title>Login</title>
-		<h:outputStylesheet library="css" name="sistema.css"/>
+		<h:outputStylesheet library="css" name="animate.css"/>
+	    <h:outputStylesheet library="css" name="style.css"/>
+	    
+	     <h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
+	    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
 	</h:head>
 	
 	<f:event listener="#{loginBean.preRender}" type="preRenderView"/>
 	
-	<h:body style="background: url('#{facesContext.externalContext.requestContextPath}/resources/images/logo.png') repeat !important;">
-	<p:layout fullPage="true">
-		<h:graphicImage library="images"  name="logo.png">
-		<p:layoutUnit position="center">
-		<div id="login-dialog">
-			<h1>Login</h1>
-			
-			<p:messages id="messages" autoUpdate="true" closable="true"/>
-			
-			<h:form id="frm" prependId="false">
-				<h:panelGrid columns="2" styleClass="grid-login">
-					<p:outputLabel value="E-mail" />
-					<p:inputText size="30" id="j_username" value="#{loginBean.email}"/>
-					
-					<p:outputLabel value="Senha" />
-					<p:password size="30" id="j_password"/>
-					
-					<h:panelGroup />
-					<p:commandButton value="login" action="#{loginBean.login}" ajax="false"/>
-				</h:panelGrid>
-			</h:form>
+	<h:body styleClass="gray-bg">
+	<div class="middle-box text-center loginscreen animated fadeInDown">
+
+		<div>
+			<h1 class="logo-name"></h1>
 		</div>
-		</p:layoutUnit>
-		</h:graphicImage>
-	</p:layout>
-	</h:body>
+		<h3>Bem Vindo a Imobiliária</h3>
+		<p></p>
+		<p>Entre com seu e-mail e senha.</p>
+
+		<p:messages id="messages" autoUpdate="true" closable="true" />
+
+		<h:form id="frm" prependId="false" class="m-t" role="form">
+
+			<div class="form-group">
+				<p:inputText class="form-control" placeholder="e-mail"
+					id="j_username" value="#{loginBean.email}" />
+			</div>
+			<div class="form-group">
+				<p:password class="form-control" placeholder="Senha" size="30"
+					id="j_password" />
+			</div>
+
+			<p:commandButton value="login" action="#{loginBean.login}" ajax="false" styleClass="btn btn-primary block full-width m-b"/>
+
+			<a href="#"><small>Esqueceu sua senha?</small></a>
+            <p class="text-muted text-center"><small>Não tem uma conta?</small></p>
+            <a class="btn btn-sm btn-white btn-block" href="register.html">Crie uma conta</a>
+		</h:form>
+
+		<p class="m-t"> <small>Rango Soluções em TI 2016</small> </p>
+	</div>
+	 <!-- Mainly scripts -->
+	<h:outputScript library="js" name="jquery-2.1.1.js"/>
+	<h:outputScript library="js" name="bootstrap.min.js"/>
+</h:body>
 	
 </html>
